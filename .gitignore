@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+.env
+# Local runtime credentials/config (never commit these)
+.bambu-mcp/
+cloud.json
+cameras.json
+printers.json

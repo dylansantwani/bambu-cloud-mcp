@@ -1,0 +1,53 @@
+{
+  "name": "bambu-cloud-mcp",
+  "version": "2.0.0",
+  "description": "MCP server for Bambu Lab 3D printers with cloud control, passwordless login, and LAN chamber-camera capture. Control your fleet over the internet from any MCP client.",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "bambu-cloud-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "login": "node dist/login-cli.js",
+    "dev": "tsc --watch"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "bambu",
+    "bambu-lab",
+    "3d-printing",
+    "cloud",
+    "mqtt",
+    "camera",
+    "a1",
+    "p1s",
+    "x1c",
+    "claude"
+  ],
+  "author": "Dylan Santwani",
+  "contributors": [
+    "griches (original LAN control base: github.com/griches/bambu-mcp)"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dylansantwani/bambu-cloud-mcp.git"
+  },
+  "homepage": "https://github.com/dylansantwani/bambu-cloud-mcp#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "basic-ftp": "^5.0.5",
+    "mqtt": "^5.10.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
