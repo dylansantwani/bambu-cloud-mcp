@@ -1,8 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Question or usage help
-    url: https://github.com/dylansantwani/bambu-cloud-mcp/discussions
-    about: Ask questions about setup, cloud login, or the camera here rather than opening an issue.
-  - name: Model Context Protocol docs
-    url: https://modelcontextprotocol.io
-    about: Learn how MCP servers and clients work.
+  - name: Documentation
+    url: https://github.com/dylansantwani/bambu-cloud-mcp#readme
+    about: Check the README (setup, configuration, troubleshooting) before opening an issue.
