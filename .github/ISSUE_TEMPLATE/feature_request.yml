@@ -1,0 +1,29 @@
+name: Feature request
+description: Suggest a new tool, printer/model support, or improvement.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's the problem or use case?
+      description: What are you trying to do that the server doesn't support today?
+      placeholder: I want to read chamber temperature on the X1 series...
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: The tool, parameter, or behavior you'd like. If it maps to a Bambu MQTT command or API, note that.
+    validations:
+      required: true
+  - type: input
+    id: printer-model
+    attributes:
+      label: Printer model(s) involved
+      placeholder: e.g. X1C, H2D — or "all"
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Other approaches or existing workarounds, if any.

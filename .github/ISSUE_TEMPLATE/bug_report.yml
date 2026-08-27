@@ -1,0 +1,66 @@
+name: Bug report
+description: Something isn't working — a tool errors, a printer won't connect, wrong data, etc.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for filing a bug. Please **do not paste credentials or tokens** — never include the contents of `~/.bambu-mcp/cloud.json`.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you do, and what went wrong? Include the exact error text if any.
+      placeholder: I asked to pause the print and got "connack timeout"...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen instead?
+    validations:
+      required: true
+  - type: dropdown
+    id: connection-mode
+    attributes:
+      label: Connection mode
+      options:
+        - Cloud
+        - LAN
+        - Both / not sure
+    validations:
+      required: true
+  - type: input
+    id: printer-model
+    attributes:
+      label: Printer model
+      placeholder: e.g. P1S, A1 Mini, X1C, H2D
+    validations:
+      required: true
+  - type: input
+    id: node-version
+    attributes:
+      label: Node.js version
+      description: Output of `node --version`.
+      placeholder: v20.11.0
+    validations:
+      required: true
+  - type: input
+    id: server-version
+    attributes:
+      label: bambu-cloud-mcp version / commit
+      placeholder: 2.0.0 or a commit SHA
+    validations:
+      required: true
+  - type: input
+    id: client
+    attributes:
+      label: MCP client
+      placeholder: Claude Code, Claude Desktop, ...
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Server stderr output, with any tokens or access codes redacted.
+      render: shell
