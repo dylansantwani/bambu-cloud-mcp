@@ -8,3 +8,11 @@ dist/
 cloud.json
 cameras.json
 printers.json
+
+# Compiled output built next to the sources (tsc's outDir is dist/)
+src/*.js
+src/tools/*.js
+# Local scratch/watch scripts
+.check1.sh
+.status-*.mjs
+.watch-print-*.mjs

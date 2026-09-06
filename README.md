@@ -112,6 +112,33 @@ npm run build
 
 This compiles TypeScript to `dist/`. The MCP entry point is `dist/index.js`.
 
+## Command-line use
+
+`bambu-cli.js` drives the same printers from a shell, with no MCP client and no
+server running. It reads the printer config and cloud credentials this server
+already stores, so once the MCP side is configured the CLI needs no setup.
+
+```bash
+node bambu-cli.js                 # status of every registered printer
+node bambu-cli.js watch           # poll and redraw until Ctrl+C
+node bambu-cli.js status -j       # JSON, for scripting
+node bambu-cli.js printers        # list what is registered
+node bambu-cli.js version         # firmware versions
+```
+
+| Command | What it does |
+|---|---|
+| `status` (default) | one-shot status for all printers; `-1` / `--once` to force single-shot |
+| `watch` | continuously poll and redraw |
+| `printers` | list registered printers from config |
+| `version` | firmware versions |
+| `pause` / `resume` | pause or resume the current print |
+| `stop` | stop the current print, with a confirmation prompt |
+| `speed <1\|2\|3\|4\|off>` | set print speed (3 = sport) |
+
+Options: `-p, --printer <id\|name\|serial>` targets one printer instead of all,
+`-j, --json` emits JSON, `-h, --help` shows usage.
+
 ## Configuration
 
 ### Register the server with your MCP client
