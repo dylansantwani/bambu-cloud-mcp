@@ -7,7 +7,7 @@ export interface PrinterConfig {
   model?: string;
   /** "lan" (default) connects to the printer IP; "cloud" connects via Bambu's cloud MQTT broker. */
   mode?: "lan" | "cloud";
-  /** Cloud region for cloud-mode printers. Defaults to the region stored at login. */
+  /** Cloud region for cloud-mode printers: "US" | "EU" | "China". Defaults to the region stored at login. */
   region?: string;
 }
 

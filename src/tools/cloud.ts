@@ -8,6 +8,7 @@ import {
   saveCloud,
   clearCloud,
   getCloudPath,
+  mqttHostForRegion,
   type CloudCredentials,
 } from "../cloud-store.js";
 import {
@@ -88,7 +89,7 @@ export async function syncCloudPrinters(
     const config: PrinterConfig = {
       id,
       name: `${d.name} (cloud)`,
-      host: "us.mqtt.bambulab.com", // display only; real host resolved by region
+      host: mqttHostForRegion(creds.region), // display; connect uses the same resolver
       accessCode: "",
       serialNumber: d.dev_id,
       model: d.model,

@@ -6,7 +6,7 @@
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-339933?logo=node.js&logoColor=white)](https://nodejs.org)
 [![MCP](https://img.shields.io/badge/Model_Context_Protocol-server-000000)](https://modelcontextprotocol.io)
 
-An [MCP](https://modelcontextprotocol.io) (Model Context Protocol) server that lets an AI assistant — Claude Code, Claude Desktop, or any MCP client — monitor and drive Bambu Lab printers. It talks to printers over MQTT, either on your **LAN** or through the **Bambu cloud broker** (`us.mqtt.bambulab.com` / `cn.mqtt.bambulab.com`), so status and control work from anywhere without putting the printer into LAN-Only mode. It ships **31 tools** covering status, print control, temperatures, AMS/filament, files, and a live LAN chamber-camera snapshot.
+An [MCP](https://modelcontextprotocol.io) (Model Context Protocol) server that lets an AI assistant — Claude Code, Claude Desktop, or any MCP client — monitor and drive Bambu Lab printers. It talks to printers over MQTT, either on your **LAN** or through the **Bambu cloud broker** (`us.mqtt.bambulab.com` for US and EU, `cn.mqtt.bambulab.com` for China), so status and control work from anywhere without putting the printer into LAN-Only mode. It ships **31 tools** covering status, print control, temperatures, AMS/filament, files, and a live LAN chamber-camera snapshot.
 
 ## Why this over other Bambu MCP servers
 
@@ -198,7 +198,7 @@ Run the interactive login **in your own terminal** (it needs to prompt you, so i
 npm run login
 ```
 
-- Choose your **region** (US default).
+- Choose your **region**: `US` (default), `EU`, or `China`. EU is stored as its own region. It uses the same API (`api.bambulab.com`) and MQTT broker (`us.mqtt.bambulab.com`) as US — Bambu does not publish a separate EU API, and `eu.mqtt.bambulab.com` does not resolve. China uses `api.bambulab.cn` and `cn.mqtt.bambulab.com`.
 - Enter your **account email**.
 - Pick **method 1 (email code)** — no password needed; a one-time code is emailed to you. Password and TOTP-2FA are also supported.
 
@@ -227,7 +227,7 @@ To add a LAN-only printer directly (no cloud account): "Add a printer at 192.168
 A printer's `mode` decides how its MQTT client connects:
 
 - **LAN mode** connects to the printer's IP with username `bblp` + the printer's access code.
-- **Cloud mode** connects to `us.mqtt.bambulab.com` (or `cn.` for China) with username `u_<uid>` + your account token.
+- **Cloud mode** connects to `us.mqtt.bambulab.com` for US and EU, or `cn.mqtt.bambulab.com` for China, with username `u_<uid>` + your account token.
 
 The command topics (`device/<serial>/request` and `/report`) are identical in both, which is why every control tool works the same over the cloud as on the LAN. File operations use FTPS (`basic-ftp`), and the chamber camera speaks the printer's TLS port-6000 image protocol directly (`camera-client.ts`).
 

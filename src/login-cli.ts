@@ -22,7 +22,7 @@ import {
   getAccountUsername,
   type LoginResult,
 } from "./bambu-cloud.js";
-import { saveCloud, getCloudPath, type CloudCredentials } from "./cloud-store.js";
+import { saveCloud, getCloudPath, parseRegion, type CloudCredentials } from "./cloud-store.js";
 
 function ask(question: string, muted = false): Promise<string> {
   const mutable = new Writable({
@@ -48,8 +48,19 @@ function ask(question: string, muted = false): Promise<string> {
 
 async function main() {
   console.log("=== Bambu Lab cloud login ===\n");
-  const regionInput = (await ask("Region [US]/China: ")) || "US";
-  const region = regionInput.toLowerCase().startsWith("ch") ? "China" : "US";
+  const regionInput = (await ask("Region [US]/EU/China: ")) || "US";
+  const region = parseRegion(regionInput);
+  if (!region) {
+    console.error(
+      `\nUnknown region "${regionInput}". Use US, EU, or China.`,
+    );
+    process.exit(1);
+  }
+  if (region === "EU") {
+    console.log(
+      "EU accounts use the global API and MQTT broker (same hosts as US). China is the only separate cloud.",
+    );
+  }
   const email = await ask("Bambu account email: ");
   console.log(
     "\nLogin method:\n  1) Email code — no password needed (a code is emailed to you)\n  2) Password",

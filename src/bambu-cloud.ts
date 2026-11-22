@@ -12,13 +12,10 @@
  * References: the pybambu (Home Assistant ha-bambulab) cloud implementation.
  */
 
-const API_HOST_GLOBAL = "https://api.bambulab.com";
-const API_HOST_CHINA = "https://api.bambulab.cn";
+import { apiHostForRegion } from "./cloud-store.js";
 
 function apiHost(region?: string): string {
-  return (region || "").toLowerCase().startsWith("china")
-    ? API_HOST_CHINA
-    : API_HOST_GLOBAL;
+  return apiHostForRegion(region);
 }
 
 // Headers mimicking the Bambu network agent — required or Cloudflare 403s.
